@@ -19,23 +19,20 @@ class ViewController: UIViewController {
 
 
     @IBAction func keyPressed(_ sender: UIButton) {
-    
-        print("Red C Pressed")
-        playSound()
+              
+        print("Pressed: \(sender.currentTitle!)")
+        // or via
+        // print(sender.titleLabel!.text!)
+        playSound(soundName: sender.currentTitle!)
         
     }
-    
-
-    @IBAction func keyDPressed(_ sender: UIButton) {
         
-        print("Orange D Pressed")
-    }
-    
-    func playSound() {
-            let url = Bundle.main.url(forResource: "C", withExtension: "wav")
-            player = try! AVAudioPlayer(contentsOf: url!)
+    func playSound(soundName: String) {
+        let url = Bundle.main.url(forResource: soundName,  withExtension: "wav")
+        player = try! AVAudioPlayer(contentsOf: url!)
         player.play()
                     
         }
+    
 }
 
